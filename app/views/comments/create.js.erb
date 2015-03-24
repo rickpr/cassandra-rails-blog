@@ -1,0 +1,4 @@
+var new_comment = $("<%= j render @comment %>").hide();
+$('#comments').prepend(new_comment);
+new_comment.fadeIn('slow');
+$('form')[0].reset();

@@ -1,0 +1,38 @@
+development:
+  host: <%= ENV['CASSANDRA_HOST'] %>
+  port: <%= ENV['CASSANDRA_PORT'] %>
+  keyspace: <%= ENV['CASSANDRA_KEYSPACE'] %> 
+  username: <%= ENV['CASSANDRA_USER'] %>
+  password: <%= ENV['CASSANDRA_PASSWORD'] %>
+  max_retries: 3
+  retry_delay: 0.5
+  newrelic: false
+
+test:
+  host: '127.0.0.1'
+  port: 9042
+  keyspace: cassie_test
+  max_retries: 3
+  retry_delay: 0.5
+  newrelic: false
+
+production:
+  hosts:
+    - 'cass1.cassie.biz'
+    - 'cass2.cassie.biz'
+    - 'cass3.cassie.biz'
+  port: 9042
+  keyspace: cassie_production
+  username: 'myappuser'
+  password: 'password1'
+  max_retries: 3
+  retry_delay: 0.5
+  newrelic: true
+  replication:
+    class: SimpleStrategy
+    replication_factor: 1
+# replication:
+#   class: NetworkTopologyStrategy
+#   datacenter1: 3
+#   datacenter2: 2
+# durable_writes: false
